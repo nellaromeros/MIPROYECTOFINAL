@@ -1,0 +1,733 @@
+/* 1. IDENTIDAD VISUAL */
+
+:root {
+    --borgona: #70283d;
+    --vino: #923d55;
+    --rosa: #ead0d2;
+    --rosa-claro: #f8eeee;
+    --crema: #faf6ef;
+    --blanco: #ffffff;
+    --dorado: #b99a68;
+    --texto: #51413e;
+    --radio: 12px;
+}
+
+/* 2. ESTILO GENERAL */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--texto);
+    background: var(--crema);
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+}
+
+h2 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin-bottom: 15px;
+    color: var(--borgona);
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: var(--vino);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--dorado);
+    outline-offset: 3px;
+}
+
+/* 3. ANIMACIONES */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes flotar {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+/* 4. ENCABEZADO */
+
+.encabezado {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px 30px;
+    padding: 14px 6%;
+    background: rgba(250, 246, 239, 0.97);
+    box-shadow: 0 3px 18px rgba(80, 35, 45, 0.08);
+    backdrop-filter: blur(10px);
+}
+
+.logo h2 {
+    color: var(--borgona);
+    font-size: 43px;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 23px;
+}
+
+.menu a {
+    color: var(--borgona);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background: var(--dorado);
+    transition: width 0.3s;
+}
+
+.menu a:hover {
+    color: var(--dorado);
+}
+
+.menu a:hover::after {
+    width: 100%;
+}
+
+/* 5. BOTONES */
+
+.boton,
+.boton-promo,
+.boton-calcular,
+.boton-contacto {
+    display: inline-block;
+    padding: 12px 26px;
+    border: 1px solid var(--borgona);
+    border-radius: 4px;
+    background: var(--borgona);
+    color: var(--blanco);
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.boton:hover,
+.boton-promo:hover,
+.boton-calcular:hover,
+.boton-contacto:hover {
+    background: var(--dorado);
+    border-color: var(--dorado);
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* 6. PORTADA */
+
+.portada {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 45px;
+    padding: 85px 8%;
+    min-height: 570px;
+    background: linear-gradient(120deg, #f3e4df, #faf3eb);
+}
+
+.portada-texto {
+    animation: aparecer 1s ease;
+}
+
+.portada-texto h1 {
+    color: var(--borgona);
+    margin-bottom: 25px;
+}
+
+.portada-texto p {
+    max-width: 500px;
+    margin: 15px 0 28px;
+    font-size: 16px;
+    color: #675452;
+}
+
+.galleta-grande {
+    width: min(100%, 440px);
+    aspect-ratio: 1;
+    justify-self: center;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 8px solid var(--dorado);
+    box-shadow: 0 12px 0 var(--borgona);
+    animation: flotar 5s ease-in-out infinite;
+}
+
+.galleta-grande img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: transparent;
+}
+
+/* 7. SECCIONES */
+
+section {
+    padding: 80px 7%;
+}
+
+.subtitulo {
+    margin-bottom: 35px;
+    color: #796965;
+}
+
+/* NOSOTROS */
+
+.nosotros {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 55px;
+    background: var(--crema);
+}
+
+.nosotros-imagen img {
+    width: 100%;
+    height: 390px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 12px 12px 0 var(--rosa);
+}
+
+.nosotros-contenido h2 {
+    margin-bottom: 25px;
+}
+
+.nosotros-contenido p {
+    margin-bottom: 17px;
+    max-width: 550px;
+    color: #6b5a56;
+}
+
+.nosotros-contenido .boton {
+    margin-top: 12px;
+}
+
+/* 8. CATÁLOGO */
+
+.catalogo {
+    background: var(--rosa-claro);
+    text-align: center;
+}
+
+.catalogo h2 {
+    margin-bottom: 10px;
+}
+
+.contenedor-tarjetas {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 25px;
+    max-width: 1250px;
+    margin: 40px auto 0;
+}
+
+.tarjeta {
+    background: var(--blanco);
+    border: 1px solid #eee0dc;
+    border-radius: var(--radio);
+    overflow: hidden;
+    box-shadow: 0 7px 22px rgba(80, 35, 45, 0.07);
+    transition: transform 0.35s, box-shadow 0.35s;
+    text-align: left;
+}
+
+.tarjeta:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(80, 35, 45, 0.13);
+}
+
+.tarjeta img {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    padding: 10px;
+    background: #fffaf7;
+    transition: transform 0.4s;
+}
+
+.tarjeta:hover img {
+    transform: scale(1.04);
+}
+
+.tarjeta-info {
+    padding: 22px;
+}
+
+.tarjeta-info h3 {
+    color: var(--borgona);
+    margin-bottom: 8px;
+}
+
+.tarjeta-info p {
+    font-size: 13px;
+    color: #796965;
+    margin-bottom: 12px;
+    min-height: 48px;
+}
+
+.precio {
+    display: block;
+    margin-bottom: 18px;
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    font-weight: 700;
+    color: var(--vino);
+}
+
+.tarjeta-info .boton {
+    width: 100%;
+    text-align: center;
+}
+
+/* 9. PROMOCIONES */
+
+.promociones {
+    background: var(--borgona);
+    color: var(--rosa);
+}
+
+.promociones h2 {
+    color: #e8d0a5;
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.contenedor-promociones {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.tarjeta-promocion {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    background: var(--blanco);
+    border-radius: var(--radio);
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.tarjeta-promocion:hover {
+    transform: translateY(-6px);
+}
+
+.tarjeta-promocion img {
+    width: 100%;
+    height: 100%;
+    min-height: 230px;
+    object-fit: contain;
+    background: #fffaf7;
+    padding: 8px;
+}
+
+.contenido-promocion {
+    padding: 25px;
+    color: var(--texto);
+}
+
+.descuento {
+    display: inline-block;
+    padding: 5px 12px;
+    background: var(--rosa);
+    color: var(--borgona);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.contenido-promocion h3 {
+    color: var(--borgona);
+    margin: 12px 0;
+}
+
+.contenido-promocion p {
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.boton-promo {
+    background: var(--borgona);
+    color: white;
+}
+
+/* 10. CALCULADORA */
+
+.seccion-calculadora {
+    background: var(--crema);
+}
+
+.calculadora-encabezado {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.calculadora-encabezado p {
+    color: #796965;
+}
+
+.calculadora-contenedor {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 28px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.calculadora-formulario,
+.resultado-calculadora {
+    background: white;
+    padding: 30px;
+    border: 1px solid #eee0dc;
+    border-radius: var(--radio);
+    box-shadow: 0 7px 22px rgba(80, 35, 45, 0.07);
+}
+
+.calculadora-formulario h3 {
+    color: var(--borgona);
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin: 15px 0 7px;
+    color: var(--borgona);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #e7d8d4;
+    border-radius: 5px;
+    background: #fffdfb;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    color: var(--texto);
+    transition: border-color 0.3s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--dorado);
+}
+
+.boton-calcular,
+.boton-contacto {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.resultado-calculadora {
+    background: var(--borgona);
+    color: white;
+    border-color: var(--borgona);
+}
+
+.resultado-calculadora h3 {
+    color: #e8d0a5;
+    margin-bottom: 20px;
+}
+
+.resultado-calculadora p {
+    font-size: 13px;
+    margin: 15px 0 8px;
+}
+
+.resultado-calculadora hr {
+    border: 0;
+    border-top: 1px solid rgba(255,255,255,0.25);
+    margin: 22px 0;
+}
+
+.valor-total {
+    display: block;
+    color: #e8d0a5;
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+}
+
+.mensaje-calculadora {
+    font-size: 12px;
+    color: #ead9d9;
+}
+
+/* 11. CONTACTO */
+
+.seccion-contacto {
+    background: #f1e5e1;
+}
+
+.contacto-encabezado {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.contacto-encabezado p {
+    color: #796965;
+}
+
+.contacto-contenedor {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    max-width: 1050px;
+    margin: auto;
+}
+
+.contacto-informacion,
+.contacto-formulario {
+    background: white;
+    padding: 30px;
+    border-radius: var(--radio);
+    box-shadow: 0 7px 22px rgba(80, 35, 45, 0.07);
+}
+
+.contacto-informacion h3,
+.contacto-formulario h3 {
+    color: var(--borgona);
+    margin-bottom: 20px;
+}
+
+.dato-contacto {
+    padding: 13px 0;
+    border-bottom: 1px solid #eee5e1;
+}
+
+.dato-contacto h4 {
+    color: var(--vino);
+    font-size: 14px;
+}
+
+.dato-contacto p,
+.dato-contacto a {
+    color: #796965;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.dato-contacto a:hover {
+    color: var(--borgona);
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* 12. PIE DE PÁGINA */
+
+.pie {
+    background: #512331;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.pie h3 {
+    color: #e8d0a5;
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.pie-redes {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 15px 0;
+}
+
+.pie-redes a {
+    color: #f0d7d1;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.pie-redes a:hover {
+    color: white;
+}
+
+.pie p:last-child {
+    font-size: 11px;
+    color: #d8bdc0;
+    margin-top: 20px;
+}
+
+/* 13. TABLET */
+
+@media (max-width: 1000px) {
+    .encabezado {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .contenedor-tarjetas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* 14. CELULARES */
+
+@media (max-width: 650px) {
+    section {
+        padding: 55px 20px;
+    }
+
+    .logo h2 {
+        font-size: 38px;
+    }
+
+    .menu {
+        justify-content: center;
+        gap: 10px 14px;
+    }
+
+    .menu a {
+        font-size: 11px;
+    }
+
+    .portada,
+    .nosotros,
+    .calculadora-contenedor,
+    .contacto-contenedor {
+        grid-template-columns: 1fr;
+    }
+
+    .portada {
+        padding: 55px 22px;
+        text-align: center;
+    }
+
+    .portada-texto h1 {
+        font-size: 42px;
+    }
+
+    .portada-texto p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .galleta-grande {
+        width: min(85%, 320px);
+    }
+
+    .nosotros-imagen img {
+        height: 280px;
+    }
+
+    .contenedor-tarjetas {
+        grid-template-columns: 1fr;
+        max-width: 360px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .contenedor-promociones {
+        grid-template-columns: 1fr;
+    }
+
+    .tarjeta-promocion {
+        grid-template-columns: 1fr;
+    }
+
+    .tarjeta-promocion img {
+        height: 210px;
+        min-height: 210px;
+    }
+
+    .calculadora-formulario,
+    .resultado-calculadora,
+    .contacto-informacion,
+    .contacto-formulario {
+        padding: 22px;
+    }
+}
+
+/* 15. ACCESIBILIDAD */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
