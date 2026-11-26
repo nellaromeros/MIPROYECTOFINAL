@@ -12,7 +12,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
@@ -57,7 +57,7 @@
             </div>
 
             <div class="galleta-grande">
-                <img src="img/brownies.jpg" alt="Brownies de Brunella">
+                <img src="/img/brownies.jpg" alt="Brownies de Brunella">
             </div>
 
         </section>
@@ -66,7 +66,7 @@
         <section id="nosotros" class="nosotros">
 
             <div class="nosotros-imagen">
-                <img src="img/postres.jpg" alt="Postres de Brunella">
+                <img src="/img/postres.jpg" alt="Postres de Brunella">
             </div>
 
             <div class="nosotros-contenido">
@@ -107,7 +107,7 @@
                 <!-- GALLETAS -->
                 <article class="tarjeta">
 
-                    <img src="img/galletas.jpg" alt="Galletas de chocolate">
+                    <img src="/img/galletas.jpg" alt="Galletas de chocolate">
 
                     <div class="tarjeta-info">
 
@@ -120,8 +120,8 @@
 
                         <span class="precio">$10.000</span>
 
-                        <a href="#contacto" class="boton">
-                            Consultar
+                        <a href="#calculadora" class="boton">
+                            Calcular pedido
                         </a>
 
                     </div>
@@ -131,7 +131,7 @@
                 <!-- BROWNIES -->
                 <article class="tarjeta">
 
-                    <img src="img/brownies.jpg" alt="Brownies de chocolate">
+                    <img src="/img/brownies.jpg" alt="Brownies de chocolate">
 
                     <div class="tarjeta-info">
 
@@ -144,8 +144,8 @@
 
                         <span class="precio">$6.000</span>
 
-                        <a href="#contacto" class="boton">
-                            Consultar
+                        <a href="#calculadora" class="boton">
+                            Calcular pedido
                         </a>
 
                     </div>
@@ -155,7 +155,7 @@
                 <!-- POSTRES -->
                 <article class="tarjeta">
 
-                    <img src="img/postres.jpg" alt="Postres de Brunella">
+                    <img src="/img/postres.jpg" alt="Postres de Brunella">
 
                     <div class="tarjeta-info">
 
@@ -168,8 +168,8 @@
 
                         <span class="precio">$13.000</span>
 
-                        <a href="#contacto" class="boton">
-                            Consultar
+                        <a href="#calculadora" class="boton">
+                            Calcular pedido
                         </a>
 
                     </div>
@@ -179,7 +179,7 @@
                 <!-- COOKIE CAKE -->
                 <article class="tarjeta">
 
-                    <img src="img/cookiecake.jpg" alt="Cookie Cake">
+                    <img src="/img/cookiecake.jpg" alt="Cookie Cake">
 
                     <div class="tarjeta-info">
 
@@ -192,8 +192,8 @@
 
                         <span class="precio">$70.000</span>
 
-                        <a href="#contacto" class="boton">
-                            Consultar
+                        <a href="#calculadora" class="boton">
+                            Calcular pedido
                         </a>
 
                     </div>
@@ -213,7 +213,7 @@
 
                 <article class="tarjeta-promocion">
 
-                    <img src="img/cookiecake.jpg" alt="Cookie Cake de Brunella">
+                    <img src="/img/cookiecake.jpg" alt="Cookie Cake de Brunella">
 
                     <div class="contenido-promocion">
 
@@ -238,7 +238,7 @@
 
                 <article class="tarjeta-promocion">
 
-                    <img src="img/brownies.jpg" alt="Brownies de chocolate">
+                    <img src="/img/brownies.jpg" alt="Brownies de chocolate">
 
                     <div class="contenido-promocion">
 
@@ -273,7 +273,7 @@
                 <h2>Calcula el valor de tu pedido</h2>
 
                 <p>
-                    Selecciona tus productos y consulta
+                    Selecciona un producto y la cantidad para consultar
                     el valor estimado de tu compra.
                 </p>
 
@@ -281,7 +281,9 @@
 
             <div class="calculadora-contenedor">
 
-                <div class="calculadora-formulario">
+                <form class="calculadora-formulario"
+                      method="POST"
+                      action="/api/calcular">
 
                     <h3>Información del pedido</h3>
 
@@ -289,14 +291,23 @@
                         Selecciona un producto:
                     </label>
 
-                    <select id="producto">
+                    <select id="producto" name="producto" required>
 
                         <option value="">Selecciona una opción</option>
-                         <option value="galletas">Galletas</option>
-                         <option value="brownies">Brownies</option>
-                         <option value="postres">Postres</option>
-                         <option value="cookiecake_entera">Cookie Cake entera</option>
-                         <option value="cookiecake_porcion">Cookie Cake porción</option>
+
+                        <option value="galletas">Galletas</option>
+
+                        <option value="brownies">Brownies</option>
+
+                        <option value="postres">Postres</option>
+
+                        <option value="cookiecake_entera">
+                            Cookie Cake entera
+                        </option>
+
+                        <option value="cookiecake_porcion">
+                            Cookie Cake porción
+                        </option>
 
                     </select>
 
@@ -307,25 +318,23 @@
                     <input
                         type="number"
                         id="cantidad"
+                        name="cantidad"
                         placeholder="Ingresa la cantidad"
                         min="1"
+                        step="1"
+                        required
                     >
 
-                    <label for="descuento">
-                        Código de descuento:
-                    </label>
-
-                    <input
-                        type="text"
-                        id="descuento"
-                        placeholder="Si tienes un código, escríbelo"
-                    >
-
-                    <button type="button" class="boton-calcular">
+                    <button type="submit" class="boton-calcular">
                         Calcular pedido
                     </button>
 
-                </div>
+                    <p>
+                        El resultado aparecerá en una página nueva
+                        después de enviar tus datos.
+                    </p>
+
+                </form>
 
                 <div class="resultado-calculadora">
 
@@ -342,7 +351,8 @@
                     <span class="valor-total">$0</span>
 
                     <p class="mensaje-calculadora">
-                        Aquí aparecerá el resultado de tu compra.
+                        Aquí aparecerá el resultado de tu compra
+                        después de realizar el cálculo.
                     </p>
 
                 </div>
@@ -376,7 +386,7 @@
                         <h4>WhatsApp</h4>
 
                         <p>
-                            <a href="https://wa.me/573023468145" target="_blank">
+                            <a href="https://wa.me/573023468145" target="_blank" rel="noopener">
                                 302 346 8145
                             </a>
                         </p>
@@ -388,7 +398,7 @@
                         <h4>Instagram</h4>
 
                         <p>
-                            <a href="https://www.instagram.com/brunellarr/" target="_blank">
+                            <a href="https://www.instagram.com/brunellarr/" target="_blank" rel="noopener">
                                 @brunellarr
                             </a>
                         </p>
@@ -410,41 +420,21 @@
 
                 <div class="contacto-formulario">
 
-                    <h3>Envíanos un mensaje</h3>
+                    <h3>¿Lista para hacer tu pedido?</h3>
 
-                    <form>
+                    <p>
+                        Contáctanos por WhatsApp para consultar
+                        disponibilidad y recibir atención personalizada.
+                    </p>
 
-                        <label for="nombre">Nombre:</label>
-
-                        <input
-                            type="text"
-                            id="nombre"
-                            placeholder="Escribe tu nombre"
-                        >
-
-                        <label for="correo">
-                            Correo electrónico:
-                        </label>
-
-                        <input
-                            type="email"
-                            id="correo"
-                            placeholder="Escribe tu correo"
-                        >
-
-                        <label for="mensaje">Mensaje:</label>
-
-                        <textarea
-                            id="mensaje"
-                            rows="5"
-                            placeholder="¿Qué te gustaría pedir?"
-                        ></textarea>
-
-                        <button type="button" class="boton-contacto">
-                            Enviar mensaje
-                        </button>
-
-                    </form>
+                    <a
+                        href="https://wa.me/573023468145"
+                        target="_blank"
+                        rel="noopener"
+                        class="boton-contacto"
+                    >
+                        Escribir por WhatsApp
+                    </a>
 
                 </div>
 
@@ -461,7 +451,7 @@
 
         <p class="pie-redes">
 
-            <a href="https://www.instagram.com/brunellarr/" target="_blank">
+            <a href="https://www.instagram.com/brunellarr/" target="_blank" rel="noopener">
                 Instagram
             </a>
 
@@ -476,51 +466,6 @@
         </p>
 
     </footer>
-
-<script>
-document.querySelector(".boton-calcular").addEventListener("click", async function () {
-
-    const producto = document.getElementById("producto").value;
-    const cantidad = document.getElementById("cantidad").value;
-
-    if (!producto || !cantidad || Number(cantidad) < 1) {
-        alert("Selecciona un producto y una cantidad válida.");
-        return;
-    }
-
-    try {
-        const respuesta = await fetch("/calcular", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                producto: producto,
-                cantidad: cantidad
-            })
-        });
-
-        const datos = await respuesta.json();
-
-        if (!respuesta.ok) {
-            alert(datos.error);
-            return;
-        }
-
-        document.querySelector(".resultado-calculadora strong").textContent =
-            datos.producto + " x " + datos.cantidad;
-
-        document.querySelector(".valor-total").textContent =
-            "$" + datos.total.toLocaleString("es-CO");
-
-        document.querySelector(".mensaje-calculadora").textContent =
-            datos.mensaje;
-
-    } catch (error) {
-        alert("Error al conectar con Python.");
-    }
-});
-</script>
 
 </body>
 </html>
